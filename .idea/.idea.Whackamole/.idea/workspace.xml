@@ -6,15 +6,20 @@
   <component name="ChangeListManager">
     <list default="true" id="243b0b91-76be-4a42-b9df-1d2bdb2d03c4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Whackamole/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Whackamole/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Hands.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Hands.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/whackamole2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/whackamole2.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/whackamolemachine.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/whackamolemachine.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Music &amp; SFX/Background Music/Electricity.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Music &amp; SFX/Background Music/Electricity.wav.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Music &amp; SFX/RopeStretch.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Music &amp; SFX/RopeStretch.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CameraShake.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CameraShake.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DudeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DudeController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/MoleController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MoleController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/UniversalRP.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/UniversalRP.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UniversalRenderPipelineGlobalSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UniversalRenderPipelineGlobalSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,8 +30,11 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/AudioManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CameraShake.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/CustomSlider.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/DudeController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/IntroManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
@@ -104,7 +112,9 @@
       <updated>1762120421579</updated>
       <workItem from="1762120424254" duration="5000" />
       <workItem from="1762312545517" duration="2974000" />
-      <workItem from="1762385965493" duration="2254000" />
+      <workItem from="1762385965493" duration="3020000" />
+      <workItem from="1762401566131" duration="15396000" />
+      <workItem from="1762444592015" duration="1665000" />
     </task>
     <servers />
   </component>

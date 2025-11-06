@@ -4,7 +4,6 @@ using System.Collections;
 public class CameraShake : MonoBehaviour
 {
     public static CameraShake Instance;
-
     private Vector3 _originalPos;
 
     void Awake()
@@ -26,11 +25,9 @@ public class CameraShake : MonoBehaviour
             float x = Random.Range(-1f, 1f) * magnitude;
             float y = Random.Range(-1f, 1f) * magnitude;
             transform.localPosition = new Vector3(x, y, _originalPos.z);
-
             elapsed += Time.deltaTime;
             yield return null;
         }
-
         transform.localPosition = _originalPos;
     }
 }
