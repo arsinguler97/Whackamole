@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: cde74f7790e4dde4e941b6eb80293008
+guid: 3f8413db95f04f9438623c44397a353e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1624108181874779714
-    second: Hands_0
+      213: 8407803997256337848
+    second: Gripped2_0
   - first:
-      213: 4710320323224341537
-    second: Hands_1
+      213: 6200917349627840975
+    second: Gripped2_1
   - first:
-      213: -3607849992788312949
-    second: Hands_2
+      213: 7549537482225355020
+    second: Gripped2_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -106,7 +106,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Hands_0
+      name: Gripped2_0
       rect:
         serializedVersion: 2
         x: 0
@@ -121,14 +121,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: eb95c86a6320679e0800000000000000
-      internalID: -1624108181874779714
+      spriteID: 8b9c29560358ea470800000000000000
+      internalID: 8407803997256337848
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hands_1
+      name: Gripped2_1
       rect:
         serializedVersion: 2
         x: 96
@@ -143,14 +143,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 12c071ca06b6e5140800000000000000
-      internalID: 4710320323224341537
+      spriteID: fc9cf12c9751e0650800000000000000
+      internalID: 6200917349627840975
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hands_2
+      name: Gripped2_2
       rect:
         serializedVersion: 2
         x: 192
@@ -165,8 +165,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b8cf4f8fb875eedc0800000000000000
-      internalID: -3607849992788312949
+      spriteID: c090a86475855c860800000000000000
+      internalID: 7549537482225355020
       vertices: []
       indices: 
       edges: []
@@ -175,7 +175,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 6bec3f0de227cad4a8abaf22c19989ee
+    spriteID: 8170390e21fdfc941a65132f8e3238bb
     internalID: 0
     vertices: []
     indices: 
@@ -185,9 +185,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Hands_0: -1624108181874779714
-      Hands_1: 4710320323224341537
-      Hands_2: -3607849992788312949
+      Gripped2_0: 8407803997256337848
+      Gripped2_1: 6200917349627840975
+      Gripped2_2: 7549537482225355020
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

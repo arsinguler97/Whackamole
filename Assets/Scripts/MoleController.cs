@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class MoleController : MonoBehaviour
 {
@@ -12,15 +13,21 @@ public class MoleController : MonoBehaviour
     [SerializeField] private RectTransform rightHole;
 
     [Header("Sprites")]
-    [SerializeField] private Sprite idleSprite;         // Default sprite when idle
-    [SerializeField] private Sprite[] upSprites;        // Two-frame animation when mole is up
-    [SerializeField] private Sprite moveLeftSprite;     // One-frame animation when moving left
-    [SerializeField] private Sprite moveRightSprite;    // One-frame animation when moving right
+    [SerializeField] private Sprite idleSprite;
+    [SerializeField] private Sprite[] upSprites;
+    [SerializeField] private Sprite moveLeftSprite;
+    [SerializeField] private Sprite moveRightSprite;
+    [SerializeField] private Sprite[] deathSprites;
 
     [Header("Settings")]
-    [SerializeField] private float moveSpeed = 8f;      // Horizontal movement lerp speed
-    [SerializeField] private float upAnimSpeed = 0.2f;  // Fake up animation swap speed
-    [SerializeField] private float moveAnimDuration = 0.2f; // Duration to stay in move sprite before returning to idle
+    [SerializeField] private float moveSpeed = 8f;
+    [SerializeField] private float upAnimSpeed = 0.2f;
+    [SerializeField] private float moveAnimDuration = 0.2f;
+    [SerializeField] private float dangerTime = 2f;   // how long you can stay up before exclamation
+    [SerializeField] private float hitDelay = 0.5f;   // time after exclamation before hit
+
+    [Header("UI References")]
+    [SerializeField] private GameObject exclamationMark; // The warning sign image
 
     private Image _img;
     private RectTransform _rt;
@@ -30,12 +37,14 @@ public class MoleController : MonoBehaviour
     private float _defaultY;
     private Coroutine _upAnimCoroutine;
     private Coroutine _moveAnimCoroutine;
+    private Coroutine _warningCoroutine;
 
     void Awake()
     {
         _img = GetComponent<Image>();
         _rt = GetComponent<RectTransform>();
         _holes = new RectTransform[] { leftHole, belowLeftHole, middleHole, belowRightHole, rightHole };
+        if (exclamationMark != null) exclamationMark.SetActive(false);
     }
 
     void Start()
@@ -47,14 +56,18 @@ public class MoleController : MonoBehaviour
 
     void Update()
     {
-        // Smooth horizontal movement between holes
+        if (GameManager.Instance != null && GameManager.Instance.IsPlayerDead) return;
+
         Vector2 targetPos = new Vector2(_holes[_currentIndex].anchoredPosition.x, _rt.anchoredPosition.y);
         _rt.anchoredPosition = Vector2.Lerp(_rt.anchoredPosition, targetPos, Time.deltaTime * moveSpeed);
     }
 
     public void OnMove(InputAction.CallbackContext ctx)
     {
+        if (GameManager.Instance != null && GameManager.Instance.IsPlayerDead) return;
+        if (_isRising) return;
         if (!ctx.performed) return;
+
         float input = ctx.ReadValue<Vector2>().x;
 
         if (input < 0 && _currentIndex > 0)
@@ -71,12 +84,11 @@ public class MoleController : MonoBehaviour
 
     private void PlayMoveAnimation(Sprite moveSprite)
     {
-        // Cancel any ongoing move animation
         if (_moveAnimCoroutine != null) StopCoroutine(_moveAnimCoroutine);
         _moveAnimCoroutine = StartCoroutine(MoveAnimCoroutine(moveSprite));
     }
 
-    private System.Collections.IEnumerator MoveAnimCoroutine(Sprite moveSprite)
+    private IEnumerator MoveAnimCoroutine(Sprite moveSprite)
     {
         _img.sprite = moveSprite;
         yield return new WaitForSeconds(moveAnimDuration);
@@ -85,6 +97,8 @@ public class MoleController : MonoBehaviour
 
     public void OnRise(InputAction.CallbackContext ctx)
     {
+        if (GameManager.Instance != null && GameManager.Instance.IsPlayerDead) return;
+
         if (ctx.started)
         {
             _isRising = true;
@@ -93,6 +107,9 @@ public class MoleController : MonoBehaviour
 
             if (_upAnimCoroutine != null) StopCoroutine(_upAnimCoroutine);
             _upAnimCoroutine = StartCoroutine(UpSpriteAnimation());
+
+            if (_warningCoroutine != null) StopCoroutine(_warningCoroutine);
+            _warningCoroutine = StartCoroutine(WarningTimer());
         }
         else if (ctx.canceled)
         {
@@ -100,13 +117,15 @@ public class MoleController : MonoBehaviour
             _rt.anchoredPosition = new Vector2(_rt.anchoredPosition.x, _defaultY);
 
             if (_upAnimCoroutine != null) StopCoroutine(_upAnimCoroutine);
+            if (_warningCoroutine != null) StopCoroutine(_warningCoroutine);
+            if (exclamationMark != null) exclamationMark.SetActive(false);
+
             _img.sprite = idleSprite;
         }
     }
 
-    private System.Collections.IEnumerator UpSpriteAnimation()
+    private IEnumerator UpSpriteAnimation()
     {
-        // Loop between the two "up" sprites while mole is up
         int frame = 0;
         while (_isRising)
         {
@@ -114,5 +133,47 @@ public class MoleController : MonoBehaviour
             frame = (frame + 1) % upSprites.Length;
             yield return new WaitForSeconds(upAnimSpeed);
         }
+    }
+
+    private IEnumerator WarningTimer()
+    {
+        yield return new WaitForSecondsRealtime(dangerTime);
+
+        // show exclamation mark
+        if (exclamationMark != null && _isRising)
+            exclamationMark.SetActive(true);
+
+        // wait 0.5 more seconds before being hit
+        yield return new WaitForSecondsRealtime(hitDelay);
+
+        // if still up after that time, get hit
+        if (_isRising)
+        {
+            CameraShake.Instance.Shake(0.25f, 0.3f);
+            Die();
+        }
+    }
+
+    public int GetCurrentHoleIndex() => _currentIndex;
+    public bool IsUp() => _isRising;
+
+    public void Die()
+    {
+        StopAllCoroutines();
+        StartCoroutine(DeathAnimation());
+    }
+
+    private IEnumerator DeathAnimation()
+    {
+        _isRising = false;
+        if (exclamationMark != null) exclamationMark.SetActive(false);
+
+        for (int i = 0; i < deathSprites.Length; i++)
+        {
+            _img.sprite = deathSprites[i];
+            yield return new WaitForSecondsRealtime(0.15f);
+        }
+
+        GameManager.Instance.PlayerDie();
     }
 }

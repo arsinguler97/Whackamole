@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: f6d285ba9006a9a4d8eaf85d38e6ee9a
+guid: 9a833ffaac875994386c689adf010225
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4123225926764832936
-    second: whackamolemachine_0
+      213: 1848571666918257991
+    second: Hammer_Squish_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: whackamolemachine_0
+      name: Hammer_Squish_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 2304
-        height: 1792
+        y: 2
+        width: 48
+        height: 46
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 857508a8ddb57c6c0800000000000000
-      internalID: -4123225926764832936
+      spriteID: 745b38c032277a910800000000000000
+      internalID: 1848571666918257991
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      whackamolemachine_0: -4123225926764832936
+      Hammer_Squish_0: 1848571666918257991
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
